@@ -2,12 +2,12 @@
   <input
     type="text"
     :value="prenom"
-    @input="$emit('update:prenom', $event.target.value)"
+    @input="$emit('update:prenom', ($event.target as HTMLInputElement).value)"
   />
   <input
     type="text"
     :value="nom"
-    @input="$emit('update:nom', $event.target.value)"
+    @input="$emit('update:nom', ($event.target as HTMLInputElement).value!)"
   />
 </template>
 
@@ -16,10 +16,9 @@ defineProps<{
   prenom: string;
   nom: string;
 }>();
-
 defineEmits<{
-  (e: 'update:prenom', value: string);
-  (e: 'update:nom', value: string);
+  (e: 'update:prenom', value: string): void;
+  (e: 'update:nom', value: string): void;
 }>();
 </script>
 
